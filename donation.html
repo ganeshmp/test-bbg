@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="images/logo.png" alt="Logo" class="logo"/>
+      <h1>Brahmapadham Bhagavadgita Abhayakshetram</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="teachings.html">Teachings</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donation.html">Donate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    
+      <h2>Support Us</h2>
+      <p>You can support our mission by donating or purchasing our Bhagavad Gita book.</p>
+      <button id="buy-now">Buy Bhagavad Gita - ₹199</button>
+      <script>
+        var options = {{
+          key: "rzp_test_YourKeyHere", // Replace with your Razorpay key
+          amount: 19900,
+          currency: "INR",
+          name: "Brahmapadham",
+          description: "Bhagavad Gita Book",
+          image: "images/logo.png",
+          handler: function (response) {{
+            alert("Payment successful! ID: " + response.razorpay_payment_id);
+          }},
+          prefill: {{
+            name: "Customer Name",
+            email: "customer@example.com",
+          }},
+          theme: {{
+            color: "#4b2e83",
+          }},
+        }};
+        document.getElementById("buy-now").onclick = function (e) {{
+          var rzp = new Razorpay(options);
+          rzp.open();
+          e.preventDefault();
+        }};
+      </script>
+    
+  </main>
+  <footer>
+    <p>&copy; 2025 Brahmapadham Abhayakshetram | <a href="contact.html">Contact Us</a></p>
+  </footer>
+</body>
+</html>
